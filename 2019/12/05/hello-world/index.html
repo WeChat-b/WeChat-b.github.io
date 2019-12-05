@@ -1,3 +1,47 @@
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+#接着修改相应代码：
+# 添加总访客量
+<span id="busuanzi_container_site_uv">
+  访客数:<span id="busuanzi_value_site_uv"></span>人次
+</span>
+
+{% if theme.footer.powered %}
+  <!--<div class="powered-by">{#
+  #}{{ __('footer.powered', '<a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a>') }}{#
+#}</div>-->
+{% endif %}
+
+# 添加'|'符号
+{% if theme.footer.powered and theme.footer.theme.enable %}
+  <span class="post-meta-divider">|</span>
+{% endif %}
+
+
+{% if theme.footer.custom_text %}
+  <div class="footer-custom">{#
+  #}{{ theme.footer.custom_text }}{#
+#}</div>
+{% endif %}
+
+# 添加总访问量
+<span id="busuanzi_container_site_pv">
+   总访问量:<span id="busuanzi_value_site_pv"></span>次
+</span>
+
+# 添加'|'符号
+{% if theme.footer.powered and theme.footer.theme.enable %}
+  <span class="post-meta-divider">|</span>
+{% endif %}
+
+# 添加博客全站共：
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共{{ totalcount(site) }}字</span>
+</div>
+————————————————
+版权声明：本文为CSDN博主「sever默默」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/baidu_35145586/article/details/89033631
 <!DOCTYPE html>
 <html>
 <head>
@@ -54,7 +98,7 @@
     <cover class='cover post half'>
       
         
-  <h1 class='title'>热爱</h1>
+  <h1 class='title'>山河</h1>
 
 
   <div class="m_search">
