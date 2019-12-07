@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-12-07T07:08:41.178Z</updated>
+  <updated>2019-12-07T07:44:09.903Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>nikto</title>
+    <link href="http://yoursite.com/2019/12/07/nikto/"/>
+    <id>http://yoursite.com/2019/12/07/nikto/</id>
+    <published>2019-12-07T07:26:15.000Z</published>
+    <updated>2019-12-07T07:44:09.903Z</updated>
+    
+    <content type="html"><![CDATA[<hr><p>使用nikto进行Web扫描测试：</p><p>​    靶机：Metasploitable （192.168.157.133）</p><p>​    攻击机：Kali  2.0（192.168.157.132）</p><p>1.普通扫描</p><p>nikto -h 目标</p><p><img src="https://img.vim-cn.com/ac/12d5a89d85486fa46c065aaff274d7b102a691.png" alt="1"></p><p>2.扫描指定端口</p><p>nikto -h 目标 -p 端口</p><p><img src="https://img.vim-cn.com/f3/78b5570c051f4f3b99848ce8ee11d7aac997d1.png" alt="2"></p><p>3.目录猜解</p><p>-C 指定CGI目录 –all表示猜解CGI目录</p><p>nikto -h 192.168.157.133 -C all</p><p><img src="https://img.vim-cn.com/79/3e9745016f7630ae539857267ef0c2d9b35fc6.png" alt="3"></p><p>4.漏洞扫描</p><p>-T选项包含很多小选项 <code>–T</code> <code>9</code>表示扫描<code>SQL</code>注入漏洞<br>-T选项包含的小选项解释：<br>0 检查文件上传页面<br>1 检查<code>web</code>日志<br>2 检查错误配置或默认文件<br>3检查信息泄露问题<br>4 检查<code>XSS/Script/HTML</code>问题<br>5 从根目录检查是否存在可访问的文件<br>6 检查拒绝服务问题<br>7 从任意文件检索是否存在可访问文件<br>8 检查是否存在系统命令执行漏洞<br>9 检查<code>SQL注入</code>漏洞<br>a 检查认证绕过问题<br>b 识别安装的软件版本<br>c 检查源代码泄露问题<br>x 反向链接选项</p><p>例如：扫描sql注入漏洞</p><p>nikto -h 192.168.157.133 -T 9</p><p><img src="https://img.vim-cn.com/8a/91a0abd2d6526e7f81ff05076c39a6461748fd.png" alt="4"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;hr&gt;
+&lt;p&gt;使用nikto进行Web扫描测试：&lt;/p&gt;
+&lt;p&gt;​    靶机：Metasploitable （192.168.157.133）&lt;/p&gt;
+&lt;p&gt;​    攻击机：Kali  2.0（192.168.157.132）&lt;/p&gt;
+&lt;p&gt;1.普通扫描&lt;/p&gt;
+&lt;p&gt;ni
+      
+    
+    </summary>
+    
+    
+    
+      <category term="工具" scheme="http://yoursite.com/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
   
   <entry>
     <title>w3af命令行模式</title>
