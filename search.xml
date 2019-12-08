@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>Mysql数据库</title>
+      <link href="/2019/12/07/Mysql%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+      <url>/2019/12/07/Mysql%E6%95%B0%E6%8D%AE%E5%BA%93/</url>
+      
+        <content type="html"><![CDATA[<hr><p>mysql登录：</p><p>mysql -h地址 -P端口 -u用户名 -p密码</p><p>登陆本地只能使用mysql -u用户名 -p密码</p><p><img src="https://img.vim-cn.com/fa/babb71aa3c36bb80d994317cd2b62074b79646.png" alt="1"></p><p>修改密码：</p><p>set password = password（’123456’）;</p><p><img src="https://img.vim-cn.com/7f/7080d3d4f6b007063bc2f4f4c46cd29b5b1dbe.png" alt="2"></p><p>查看库：</p><p>show databases； </p><p><img src="https://img.vim-cn.com/58/cf31843c93d21d74f45f4a6234138c511dca13.png" alt="3"></p><p>创建库：</p><p>create database 库名；</p><p><img src="https://img.vim-cn.com/2a/bee83477c89190ab5c297f1ea95b4c4dc09e00.png" alt="4"></p><p>进入库：</p><p>use 库名；</p><p><img src="https://img.vim-cn.com/96/e07720ebe7ff48bd396c5cc98d2eafaa6cf47d.png" alt="5"></p><p>创建表：</p><p>create table 表名；</p><p>create table 表名 (</p><p>字段名 数据类型</p><p>)；</p><p>默认为null</p><p><img src="https://img.vim-cn.com/c7/17fd27dd9f1198f1a26f2d0605b01304b3f240.png" alt="6"></p><p>删除库：</p><p>drop database 库名；</p><p><img src="https://img.vim-cn.com/41/4cf12dcf87aae069772c61e62726a2f5299f5e.png" alt="7"></p><p>删除表：</p><p>drop table 表名；</p><p><img src="https://img.vim-cn.com/2b/e4248faa934599846d515c8cf8f1679d738a2e.png" alt="8"></p><p>查看表：</p><p>desc 表名；</p><p><img src="https://img.vim-cn.com/14/6036d93822039ad656da688520ab45f5a54e29.png" alt="9"></p><p>查看表里的数据：</p><p>select * from 表名；</p><p><img src="https://img.vim-cn.com/c7/e354640bac6e4159eb194bbf51216b9ea765ac.png" alt="10"></p><p>插入数据：</p><p>insert into 表名（字段名） values （“xxx”）；</p><p><img src="https://img.vim-cn.com/7b/ffb43c4acb903303d38d1c8113d9ce31294517.png" alt="11"></p><p>修改数据：</p><p>update 表名 set 字段 = ‘xxx’ where 字段 = ‘xxx’；</p><p><img src="https://img.vim-cn.com/83/1e52198b891a053f467f93ca256331c75aec80.png" alt="12"></p><p>修改字段：</p><p>alter table 表名 change 修改前的字段名 修改后的字段名 数据类型；</p><p><img src="https://img.vim-cn.com/47/62874abcc422e87c6438a2a8fe3a043ad47301.png" alt="13"></p><p>删除一行数据：</p><p>delete from 表名 where “删除的项”；</p><p><img src="https://img.vim-cn.com/07/9d139d2c2d88ef9af328df2cae54d92026f171.png" alt="14"></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 数据库 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>msfvenom生成木马</title>
       <link href="/2019/12/07/%C2%96msfvenom%E7%94%9F%E6%88%90%E6%9C%A8%E9%A9%AC/"/>
       <url>/2019/12/07/%C2%96msfvenom%E7%94%9F%E6%88%90%E6%9C%A8%E9%A9%AC/</url>
